@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/star.css">
+    
+    <title>Solar System - Orbit</title>
+</head>
+
+<body>
+    <div class="control-panel">
+        <label for="speed"> Orbit Speed </label>
+        <input oninput="attSpeed(this.value)" type="range" value="1" min="0" max="100" name="speed" id="speed">
+    </div>
+
+    <div class="stars">
+        <div class="star"></div>
+    </div>
+
+    <div class="solar-system">
+
+        <div class="sun"></div>
+        
+        <div class="neptune planet-orbit"> <div class="planet"> </div></div>
+        <div class="uranus planet-orbit">  <div class="planet"> </div></div>
+        <div class="saturn planet-orbit">  <div class="planet"> </div></div>
+        <div class="jupiter planet-orbit"> <div class="planet"> </div></div>
+        <div class="mars planet-orbit">    <div class="planet"> </div></div>
+        <div class="earth planet-orbit">   <div class="planet"> </div></div>
+        <div class="venus planet-orbit">   <div class="planet"> </div></div>
+        <div class="mercury planet-orbit"> <div class="planet"> </div></div>
+
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
