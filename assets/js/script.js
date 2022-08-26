@@ -1,4 +1,3 @@
-sunRadius = document.querySelector('.sun').offsetWidth / 200
 planetScale = 0.8
 orbitScale  = 0.3
 orbitSpeed  = 1
@@ -169,8 +168,8 @@ for (pData of solarSystem) {
     orbit.style.width = `${orbitSize}em`
     orbit.style.animationDuration = `${orbitDuration()}s`
     if (orbitReverse) orbit.style.animationDirection = 'reverse'
-    orbit.style.top = `${-orbitRadius+sunRadius}em`
-    orbit.style.left = `${-orbitRadius+sunRadius}em`
+    orbit.style.top = `${-orbitRadius}em`
+    orbit.style.left = `${-orbitRadius}em`
 }
 
 function attSpeed(value) {
