@@ -1,9 +1,8 @@
-planetScale = 0.8
-orbitScale  = 0.3
-orbitSpeed  = 1
+let planetScale = 0.8
+let orbitScale = 0.3
+let orbitSpeed = 1
 
 solarSystem = [
-    // MERCURY
     { 
         name: 'MERCURY',
 
@@ -15,14 +14,9 @@ solarSystem = [
         orbit: document.querySelector('.mercury.planet-orbit'), 
         orbitSize: 2 * orbitScale,
         orbitRadius: 2 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 2 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 2 / orbitSpeed, 
         orbitReverse: false 
     }, 
-
-    // VENUS
     { 
         name: 'VENUS',
 
@@ -34,14 +28,9 @@ solarSystem = [
         orbit: document.querySelector('.venus.planet-orbit'), 
         orbitSize: 3.5 * orbitScale,
         orbitRadius: 3.5 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 7 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 7 / orbitSpeed, 
         orbitReverse: true 
     },
-    
-    // EARTH
     {
         name: 'EARTH',
 
@@ -53,14 +42,9 @@ solarSystem = [
         orbit: document.querySelector('.earth.planet-orbit'), 
         orbitSize: 5.5 * orbitScale,
         orbitRadius: 5.5 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 10 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 10 / orbitSpeed, 
         orbitReverse: false 
     },
-    
-    // MARS
     {
         name: 'MARS',
 
@@ -72,14 +56,9 @@ solarSystem = [
         orbit: document.querySelector('.mars.planet-orbit'), 
         orbitSize: 7.5 * orbitScale,
         orbitRadius: 7.5 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 19 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 19 / orbitSpeed, 
         orbitReverse: false 
     },
-    
-    // JUPITER
     {
         name: 'JUPITER',
 
@@ -91,16 +70,11 @@ solarSystem = [
         orbit: document.querySelector('.jupiter.planet-orbit'), 
         orbitSize: 14 * orbitScale,
         orbitRadius: 14 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 119 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 119 / orbitSpeed, 
         orbitReverse: false 
     },
-    
-    // SATURN
     {
-        name: 'SATURNO',
+        name: 'SATURN',
 
         dom: document.querySelector('.saturn div'), 
         size: 0.3 * planetScale,
@@ -110,14 +84,9 @@ solarSystem = [
         orbit: document.querySelector('.saturn.planet-orbit'), 
         orbitSize: 18 * orbitScale,
         orbitRadius: 18 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 295 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 295 / orbitSpeed, 
         orbitReverse: false 
     },
-    
-    // URANUS
     {
         name: 'URANUS',
 
@@ -129,14 +98,9 @@ solarSystem = [
         orbit: document.querySelector('.uranus.planet-orbit'), 
         orbitSize: 21.5 * orbitScale,
         orbitRadius: 21.5 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 840 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 840 / orbitSpeed, 
         orbitReverse: true 
     },
-    
-    // NEPTUNE
     {
         name: 'NEPTUNE',
 
@@ -148,22 +112,18 @@ solarSystem = [
         orbit: document.querySelector('.neptune.planet-orbit'), 
         orbitSize: 33 * orbitScale,
         orbitRadius: 33 * orbitScale / 2,
-        orbitDuration: function() {
-            if (orbitSpeed == 0) { return 0 }
-            else { return 1650 / orbitSpeed }
-        }, 
+        orbitDuration: () => !orbitSpeed ? 0 : 1650 / orbitSpeed, 
         orbitReverse: false 
     }
 ]
 
 for (pData of solarSystem) {
-    let [planet, size, radius, color] = [pData.dom, pData.size, pData.radius, pData.color]
-    let [orbit, orbitSize, orbitRadius, orbitDuration, orbitReverse] = [pData.orbit, pData.orbitSize, pData.orbitRadius, pData.orbitDuration, pData.orbitReverse]
+    const { dom, size, radius, color, orbit, orbitSize, orbitRadius, orbitDuration, orbitReverse } = pData
 
-    planet.style.width = `${size}em`
-    planet.style.backgroundColor = color
-    planet.style.top = `${orbitRadius-radius}em`
-    planet.style.left = `${-radius}em`
+    dom.style.width = `${size}em`
+    dom.style.backgroundColor = color
+    dom.style.top = `${orbitRadius-radius}em`
+    dom.style.left = `${-radius}em`
 
     orbit.style.width = `${orbitSize}em`
     orbit.style.animationDuration = `${orbitDuration()}s`
